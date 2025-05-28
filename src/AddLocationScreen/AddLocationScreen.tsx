@@ -7,7 +7,8 @@ import { useContext, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { SnackbarComponent } from "../Shared/SnackbarComponent";
 import { useNavigation } from "@react-navigation/native";
 import { HeaderIconButton } from "../Shared/HeaderIconButton";
-import { t } from "i18next";
+// import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import CitiesContext from "../Context/CitiesContext";
 
 export const AddLocationScreen: React.FC<AddLocationScreenProps> = ({route}) => {
@@ -26,14 +27,16 @@ export const AddLocationScreen: React.FC<AddLocationScreenProps> = ({route}) => 
   const { addLocation, editLocation } = useContext(CitiesContext);
   const { colors } = useTheme();
   const inputRef = useRef<TextInput | null>(null);
+  const { t, i18n } = useTranslation();
   const titleText = () => {
     let text = t('AddNewLocationTitle', {name: city.name});
     if (city.locations && location && mode === 'edit') {
-      let idx = city.locations.findIndex((item) => item.id == location.id);
-      if (idx >= 0) {
-        let name = city.locations[idx].name;
-        text = t('EditLocationTitle', {name: name})
-      }
+      // let idx = city.locations.findIndex((item) => item.id == location.id);
+      // if (idx >= 0) {
+      //   let name = city.locations[idx].name;
+      //   text = t('EditLocationTitle', {name: name})
+      // }
+      text = t('EditLocationTitle', {name: location.name});
     }
     return text;
   }

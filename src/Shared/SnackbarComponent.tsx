@@ -3,8 +3,6 @@
 import { Snackbar, Text, useTheme } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
 
-const { colors } = useTheme();
-
 interface Props {
   message: string;
   visible: boolean;
@@ -12,6 +10,9 @@ interface Props {
 }
 
 export const SnackbarComponent: React.FC<Props> = ({message, visible, onDismiss}) => {
+
+  const { colors } = useTheme();
+
   return (
     <Snackbar
       visible={visible}

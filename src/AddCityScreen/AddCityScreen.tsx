@@ -8,7 +8,8 @@ import CitiesContext from "../Context/CitiesContext";
 import { SnackbarComponent } from "../Shared/SnackbarComponent";
 import { useNavigation } from "@react-navigation/native";
 import { HeaderIconButton } from "../Shared/HeaderIconButton";
-import { t } from "i18next";
+// import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export const AddCityScreen: React.FC<AddCityScreenProps> = ({route}) => {
 
@@ -16,19 +17,18 @@ export const AddCityScreen: React.FC<AddCityScreenProps> = ({route}) => {
   const mode = route.params.mode;
   const city = route.params.city;
 
-  // const inputCityInitialValue = (mode === 'add') ? '' : city?.name;
-  // const inputCountryInitialValue = (mode === 'add') ? '' : city?.country;
-  const inputCityInitialValue = '';
-  const inputCountryInitialValue = '';
+  const inputCityInitialValue = (mode === 'add') ? '' : city?.name;
+  const inputCountryInitialValue = (mode === 'add') ? '' : city?.country;
 
-  const [inputCityValue, setInputCityValue] = useState<string>(inputCityInitialValue);
-  const [inputCountryValue, setInputCountryValue] = useState<string>(inputCountryInitialValue);
+  const [inputCityValue, setInputCityValue] = useState<string>(inputCityInitialValue!);
+  const [inputCountryValue, setInputCountryValue] = useState<string>(inputCountryInitialValue!);
   const [snackbarVisible, setSnackbarVisible] = useState<boolean>(false);
 
   const { addCity, editCity } = useContext(CitiesContext);
   const { colors } = useTheme();
   const inputRef = useRef<TextInput | null>(null);
   // console.log(`AddCityScreen route is ${JSON.stringify(route)}`);
+  const { t, i18n } = useTranslation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -93,8 +93,8 @@ export const AddCityScreen: React.FC<AddCityScreenProps> = ({route}) => {
               icon={okButtonIcon}
               mode="contained"
               animated={true}
-              // onPress={() => addCityItem()}
-              onPress={() => {}}
+              onPress={() => addCityItem()}
+              // onPress={() => {}}
             />
           </View>
        </Surface>

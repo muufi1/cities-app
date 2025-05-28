@@ -25,13 +25,11 @@ const CitiesProvider: React.FC<Props> = ({children}) => {
   // }
   // keep data up to date
   useEffect(() => {
-    // saveCities();
     NativeLocalStorage?.setItem(JSON.stringify(cities), storageKey);
   }, [cities]);
 
   const [snackbarVisible, setSnackbarVisible] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>(t('SomethingWentWrong'));
-  // console.log(`CitiesProvider ${JSON.stringify(cities)}`);
   
   return (
     <CitiesContext.Provider value={{

@@ -77,3 +77,17 @@ yarn-error.log
 *.txt
 package-lock.json
 installs.md
+.eslintrc.js
+.prettierrc.js
+.watchmanconfig
+babel.config.js
+Gemfile
+gesture-handler*.js
+jest.config.js
+metro.config.js
+README.md
+.bundle
+.vscode
+android
+ios
+__tests__
